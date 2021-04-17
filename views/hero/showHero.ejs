@@ -6,48 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Hero</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
     <%- include('../components/navbar.ejs')%>
     <div class="container">
         <center><h1 class="mt-3">Daftar Hero</h1></center>
-    <button class="btn btn-success">Tambah Hero</button>
-    <table class="table table-striped mt-3">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-            <th scope="col" colspan="2">Option</th>
-        </tr>
+    <a href="/formAddHero"><button class="btn btn-success mt-5">Tambah Hero</button></a>
+    <table class="table align-middle mt-5">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Nama</th>
+      <th scope="col">Role</th>
+      <th scope="col">durability</th>
+      <th scope="col">offense</th>
+      <th scope="col">efekSkill</th>
+      <th scope="col">Kesulitan</th>
+      <th colspan="2">option</th>
+    </tr>
   </thead>
   <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><a href="add"><span class="glyphicon glyphicon-pencil"></span></a></td>
-            <td><span class="material-icons">delete</span></td>
-        </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-      <td></td>
-      <td></td>
-    </tr>
+    <% let i=1; hero.forEach((hero) => { %>
+      <tr>
+        <th scope="row"><%=i++ %></th>
+        <td><%= hero.nameHero %></td>
+        <td><%= hero.nameRole %></td>
+        <td><%= hero.durability %></td>
+        <td><%= hero.offense %></td>
+        <td><%= hero.efekSkill %></td>
+        <td><%= hero.difficulty %> %</td>
+        <td>
+          <a href="/formUpdateHero/<%= hero.idHero %>">
+            <button type="button" class="btn btn-success btn-sm px-3">
+              <b>~</b>
+            </button>
+          </a>
+        </td>
+        <td>
+          <a href="/delHero/<%= hero.idHero %>">
+            <button type="button" class="btn btn-danger btn-sm px-3">
+              <b>X</b>
+            </button>
+          </a>
+        </td>
+      </tr>
+    <% }) %>
   </tbody>
 </table>
 </div>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

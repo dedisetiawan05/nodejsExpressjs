@@ -1,15 +1,23 @@
 const express = require('express')
+const bcrypt = require('bcryptjs')
+//external router
 const appRouter = require('./rout/app')
 const heroRouter = require('./rout/hero')
 const teamRouter = require('./rout/team')
-const kategoriRouter = require('./rout/kategori')
+const roleRouter = require('./rout/role')
 const meetRouter = require('./rout/meet')
 const draftRouter = require('./rout/draft')
 const loginRouter = require('./rout/login')
+
 const app = express();
-//untuk membuka asset
+
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+    //untuk membuka asset
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
+//Routing
 //login
 app.use(loginRouter)
 //app
@@ -19,7 +27,7 @@ app.use(heroRouter)
 //team
 app.use(teamRouter)
 //kategori
-app.use(kategoriRouter)
+app.use(roleRouter)
 //meet
 app.use(meetRouter)
 //draft

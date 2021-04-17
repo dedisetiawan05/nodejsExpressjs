@@ -11,15 +11,19 @@
     <!--<%- include('../components/navbar.ejs') %>-->
     <div class="container-sm border border-primary p-3 mt-3">
         <center><h1>Silahkan Login Terlebih dahulu</h1></center>
+        <form action="/login" method="POST">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
-        <button type="button" class="btn btn-primary mt-3 btn-lg">Login</button>
+        <button type="submit" class="btn btn-primary mt-3 btn-lg">Login</button>
+        <a href="/register" class="btn btn-primary mt-3 mx-2 btn-lg">Buat Akun</a>
+        </form>
+
     </div>
     <center><%- include('../components/footer.ejs') %></center>
     
